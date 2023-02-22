@@ -1,6 +1,6 @@
-package com.facenet.mina.CustomFilterChain;
+package com.facenet.mina.codec;
 
-import com.facenet.mina.Entity.XMLEntity;
+import com.facenet.mina.entity.XmlEntity;
 import org.apache.commons.lang3.SerializationUtils;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
@@ -24,7 +24,7 @@ public class XmlEncoder extends ProtocolEncoderAdapter {
     @Override
     public void encode(IoSession ioSession, Object o, ProtocolEncoderOutput protocolEncoderOutput) throws Exception {
 
-        XMLEntity xmlEntity = (XMLEntity) o;
+        XmlEntity xmlEntity = (XmlEntity) o;
         System.out.println(xmlEntity.getClass());
         byte[] data = SerializationUtils.serialize(xmlEntity);
         IoBuffer ioBuffer = IoBuffer.allocate(data.length).setAutoExpand(true);

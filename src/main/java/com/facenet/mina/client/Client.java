@@ -1,7 +1,7 @@
 package com.facenet.mina.client;
 
 import com.facenet.mina.client.handler.ClientSessionHandler;
-import com.facenet.mina.CustomFilterChain.XmlCodecFactory;
+import com.facenet.mina.codec.XmlCodecFactory;
 import org.apache.mina.core.RuntimeIoException;
 import org.apache.mina.core.future.ConnectFuture;
 import org.apache.mina.core.session.IoSession;

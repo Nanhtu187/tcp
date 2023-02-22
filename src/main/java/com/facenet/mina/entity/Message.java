@@ -1,11 +1,11 @@
-package com.facenet.mina.Entity;
+package com.facenet.mina.entity;
 
 /**
  * @author: hungdinh
  * Date created: 20/02/2023
  */
 
-public class Message extends XMLEntity{
+public class Message extends XmlEntity {
 
     private String content;
     private String username;

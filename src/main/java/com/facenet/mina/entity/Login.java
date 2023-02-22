@@ -1,11 +1,11 @@
-package com.facenet.mina.Entity;
+package com.facenet.mina.entity;
 
 /**
  * @author: hungdinh
  * Date created: 20/02/2023
  */
 
-public class Login extends XMLEntity {
+public class Login extends XmlEntity {
 
     /**
      * XML Element

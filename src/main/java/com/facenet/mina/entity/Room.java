@@ -1,4 +1,4 @@
-package com.facenet.mina.Entity;
+package com.facenet.mina.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  * Date created: 20/02/2023
  */
 
-public class Room extends XMLEntity{
+public class Room extends XmlEntity {
 
     /**
      * List store messages

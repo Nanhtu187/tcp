@@ -2,9 +2,9 @@ package com.facenet.mina.client.handler;
 
 import com.facenet.mina.service.ClientService;
 import com.facenet.mina.service.impl.ClientServiceImpl;
-import com.facenet.mina.Entity.Message;
-import com.facenet.mina.Entity.Room;
-import com.facenet.mina.GUI.client.MainFrame;
+import com.facenet.mina.entity.Message;
+import com.facenet.mina.entity.Room;
+import com.facenet.mina.gui.client.MainFrame;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 

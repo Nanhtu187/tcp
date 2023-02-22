@@ -1,6 +1,6 @@
 package com.facenet.mina.server.handler;
 
-import com.facenet.mina.Entity.*;
+import com.facenet.mina.entity.*;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;

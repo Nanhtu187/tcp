@@ -1,8 +1,8 @@
 package com.facenet.mina.service.impl;
 
-import com.facenet.mina.Entity.Login;
-import com.facenet.mina.Entity.Logout;
-import com.facenet.mina.Entity.Message;
+import com.facenet.mina.entity.Login;
+import com.facenet.mina.entity.Logout;
+import com.facenet.mina.entity.Message;
 import com.facenet.mina.service.ClientService;
 import org.apache.mina.core.session.IoSession;
 

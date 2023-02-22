@@ -1,4 +1,4 @@
-package com.facenet.mina.CustomFilterChain;
+package com.facenet.mina.codec;
 
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolCodecFactory;

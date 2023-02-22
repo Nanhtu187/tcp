@@ -6,7 +6,7 @@ import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
-import com.facenet.mina.CustomFilterChain.XmlCodecFactory;
+import com.facenet.mina.codec.XmlCodecFactory;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

@@ -1,7 +1,7 @@
-package com.facenet.mina.GUI.client;
+package com.facenet.mina.gui.client;
 
 import com.facenet.mina.service.ClientService;
-import com.facenet.mina.Entity.Message;
+import com.facenet.mina.entity.Message;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

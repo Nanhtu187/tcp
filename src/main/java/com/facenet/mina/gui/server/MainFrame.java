@@ -1,4 +1,4 @@
-package com.facenet.mina.GUI.server;
+package com.facenet.mina.gui.server;
 
 import javax.swing.*;
 import java.awt.*;

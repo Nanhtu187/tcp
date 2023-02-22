@@ -1,4 +1,4 @@
-package com.facenet.mina.Entity;
+package com.facenet.mina.entity;
 
 import java.io.Serializable;
 
@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Date created: 20/02/2023
  */
 
-public abstract class XMLEntity implements Serializable {
+public abstract class XmlEntity implements Serializable {
 
     /**
      *

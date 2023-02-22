@@ -1,6 +1,6 @@
-package com.facenet.mina.CustomFilterChain;
+package com.facenet.mina.codec;
 
-import com.facenet.mina.Entity.*;
+import com.facenet.mina.entity.*;
 import org.apache.commons.lang3.SerializationUtils;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.AttributeKey;
@@ -24,7 +24,7 @@ public class XmlDecoder extends ProtocolDecoderAdapter {
         while (ioBuffer.hasRemaining()) {
             byte[] dataBytes = new byte[ioBuffer.remaining()];
             ioBuffer.get(dataBytes);
-            XMLEntity dataObject = SerializationUtils.deserialize(dataBytes);
+            XmlEntity dataObject = SerializationUtils.deserialize(dataBytes);
             System.out.println(dataObject.getClass());
             protocolDecoderOutput.write(dataObject);
         }
