@@ -1,13 +1,11 @@
 package com.facenet.mina.Entity;
-/*
- * Created at 21/02/2023:09:07:48
- */
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author hungdinh
+ * @author: hungdinh
+ * Date created: 20/02/2023
  */
 
 public class Room extends XMLEntity{
@@ -15,7 +13,7 @@ public class Room extends XMLEntity{
     /**
      * List store messages
      */
-    private List<Message> messageList;
+    private final List<Message> messageList;
 
     public Room() {
         messageList = new ArrayList<Message>();
@@ -30,6 +28,10 @@ public class Room extends XMLEntity{
         return messageList;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toXML() {
         StringBuilder xml = new StringBuilder();

@@ -1,13 +1,11 @@
 package com.facenet.mina.Entity;
-/*
- * Created at 17/02/2023:10:07:18
- */
 
 /**
- * @author hungdinh
+ * @author: hungdinh
+ * Date created: 20/02/2023
  */
 
-public class Login extends XMLEntity{
+public class Login extends XMLEntity {
 
     /**
      * XML Element
@@ -39,10 +37,11 @@ public class Login extends XMLEntity{
 
 
     /**
-     * @return String XML for class
+     * String XML for element Login
+     * @return
      */
     @Override
     public String toXML() {
-        return "<login><username>"+username +"</username></login>";
+        return "<login><username>"+ username +"</username></login>";
     }
 }

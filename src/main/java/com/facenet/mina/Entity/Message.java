@@ -1,5 +1,10 @@
 package com.facenet.mina.Entity;
 
+/**
+ * @author: hungdinh
+ * Date created: 20/02/2023
+ */
+
 public class Message extends XMLEntity{
 
     private String content;

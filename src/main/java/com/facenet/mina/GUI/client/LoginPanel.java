@@ -1,13 +1,11 @@
 package com.facenet.mina.GUI.client;
-/*
- * Created at 16/02/2023:09:40:43
- */
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * @author hungdinh
+ * @author: hungdinh
+ * Date created: 20/02/2023
  */
 
 public class LoginPanel extends JPanel {
@@ -16,6 +14,12 @@ public class LoginPanel extends JPanel {
 
     private JLabel label;
 
+    /**
+     * Init Panel of Login frame
+     * @param btnLogin - Button Login
+     * @param input - Input username
+     * @param label
+     */
     public LoginPanel(JButton btnLogin, JTextField input, JLabel label) {
         this.setLayout(new GridLayout(3, 1));
         this.btnLogin = btnLogin;

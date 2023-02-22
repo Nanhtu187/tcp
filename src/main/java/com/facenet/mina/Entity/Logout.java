@@ -1,10 +1,8 @@
 package com.facenet.mina.Entity;
-/*
- * Created at 21/02/2023:10:10:20
- */
 
 /**
- * @author hungdinh
+ * @author: hungdinh
+ * Date created: 20/02/2023
  */
 
 public class Logout extends XMLEntity{

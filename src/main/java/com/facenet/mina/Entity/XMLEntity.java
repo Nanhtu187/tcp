@@ -1,12 +1,17 @@
 package com.facenet.mina.Entity;
-/*
- * Created at 20/02/2023:09:37:54
- */
+
+import java.io.Serializable;
 
 /**
- * @author hungdinh
+ * @author: hungdinh
+ * Date created: 20/02/2023
  */
 
-public abstract class XMLEntity {
+public abstract class XMLEntity implements Serializable {
+
+    /**
+     *
+     * @return
+     */
     public abstract String toXML();
 }

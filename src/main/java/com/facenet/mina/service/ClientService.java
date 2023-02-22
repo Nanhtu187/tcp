@@ -1,4 +1,9 @@
-package com.facenet.mina;
+package com.facenet.mina.service;
+
+/**
+ * @author: hungdinh
+ * Date created: 20/02/2023
+ */
 
 public interface ClientService {
 

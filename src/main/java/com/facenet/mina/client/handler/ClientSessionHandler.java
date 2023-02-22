@@ -1,13 +1,17 @@
 package com.facenet.mina.client.handler;
 
-import com.facenet.mina.ClientService;
-import com.facenet.mina.ClientServiceImpl;
+import com.facenet.mina.service.ClientService;
+import com.facenet.mina.service.impl.ClientServiceImpl;
 import com.facenet.mina.Entity.Message;
 import com.facenet.mina.Entity.Room;
 import com.facenet.mina.GUI.client.MainFrame;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
+/**
+ * @author: hungdinh
+ * Date created: 20/02/2023
+ */
 public class ClientSessionHandler extends IoHandlerAdapter {
     private IoSession serverWritingSession;
 

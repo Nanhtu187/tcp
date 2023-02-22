@@ -11,6 +11,11 @@ import com.facenet.mina.CustomFilterChain.XmlCodecFactory;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
+/**
+ * @author: hungdinh
+ * Date created: 20/02/2023
+ */
+
 public class Main {
 
     /**
@@ -27,9 +32,6 @@ public class Main {
         IoAcceptor acceptor = new NioSocketAcceptor();
 
         acceptor.getFilterChain().addLast("logger", new LoggingFilter("TCPServer"));
-//        acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(
-//                new TextLineCodecFactory(Charset.forName("UTF-8"), "\n", "\n")
-//        ));
 
         acceptor.getFilterChain().addLast("xml", new ProtocolCodecFilter(
                 new XmlCodecFactory()

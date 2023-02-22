@@ -1,18 +1,14 @@
 package com.facenet.mina.GUI.client;
-/*
- * Created at 16/02/2023:10:05:49
- */
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * @author hungdinh
+ * @author: hungdinh
+ * Date created: 20/02/2023
  */
 
 public class ChatPanel extends JPanel{
-
-
 
     private JLabel l1;
 
@@ -26,6 +22,16 @@ public class ChatPanel extends JPanel{
 
     private JButton b1;
 
+
+    /**
+     * Init Panel of Chat Room
+     * @param l1
+     * @param t1
+     * @param pane
+     * @param l2
+     * @param t2
+     * @param b1
+     */
     public ChatPanel(JLabel l1, JTextArea t1, JScrollPane pane, JLabel l2, TextField t2, JButton b1) {
         Panel panel1 = new Panel();
         Panel panel2 = new Panel();

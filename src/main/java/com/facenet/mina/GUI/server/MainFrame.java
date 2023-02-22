@@ -1,13 +1,11 @@
 package com.facenet.mina.GUI.server;
-/*
- * Created at 21/02/2023:13:45:49
- */
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * @author hungdinh
+ * @author: hungdinh
+ * Date created: 20/02/2023
  */
 
 public class MainFrame extends JFrame {

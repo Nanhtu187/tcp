@@ -1,17 +1,14 @@
 package com.facenet.mina.GUI.client;
-/*
- * Created at 16/02/2023:09:39:01
- */
 
-import com.facenet.mina.ClientService;
+import com.facenet.mina.service.ClientService;
 import com.facenet.mina.Entity.Message;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 /**
- * @author hungdinh
+ * @author: hungdinh
+ * Date created: 20/02/2023
  */
 
 public class MainFrame extends JFrame {

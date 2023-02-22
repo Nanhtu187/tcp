@@ -1,6 +1,17 @@
-package com.facenet.mina;
+package com.facenet.mina.utils;
+
+
+/**
+ * @author: hungdinh
+ * Date created: 20/02/2023
+ */
 
 public class SleepWell {
+
+    /**
+     *
+     * @param timeInMS
+     */
     public static void sleepSilently(int timeInMS) {
         try {
             Thread.sleep(timeInMS);

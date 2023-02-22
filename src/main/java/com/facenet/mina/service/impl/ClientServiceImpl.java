@@ -1,17 +1,16 @@
-package com.facenet.mina;
-/*
- * Created at 15/02/2023:14:54:41
- */
+package com.facenet.mina.service.impl;
 
 import com.facenet.mina.Entity.Login;
 import com.facenet.mina.Entity.Logout;
 import com.facenet.mina.Entity.Message;
+import com.facenet.mina.service.ClientService;
 import org.apache.mina.core.session.IoSession;
 
 /**
- * @author hungdinh
+ * @author: hungdinh
+ * Date created: 20/02/2023
  */
-public class ClientServiceImpl implements ClientService{
+public class ClientServiceImpl implements ClientService {
 
     private IoSession session;
 
@@ -22,7 +21,6 @@ public class ClientServiceImpl implements ClientService{
     public ClientServiceImpl(IoSession session) {
         this.session = session;
     }
-
 
     public String getUsername() {
         return username;
