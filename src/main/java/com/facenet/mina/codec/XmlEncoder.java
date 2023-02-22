@@ -25,7 +25,6 @@ public class XmlEncoder extends ProtocolEncoderAdapter {
     public void encode(IoSession ioSession, Object o, ProtocolEncoderOutput protocolEncoderOutput) throws Exception {
 
         XmlEntity xmlEntity = (XmlEntity) o;
-        System.out.println(xmlEntity.getClass());
         byte[] data = SerializationUtils.serialize(xmlEntity);
         IoBuffer ioBuffer = IoBuffer.allocate(data.length).setAutoExpand(true);
         ioBuffer.put(data);

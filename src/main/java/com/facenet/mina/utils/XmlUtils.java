@@ -2,8 +2,14 @@ package com.facenet.mina.utils;
 
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
+import java.io.IOException;
 import java.io.StringReader;
 
 /**
@@ -26,5 +32,28 @@ public class XmlUtils {
         DocumentBuilder builder = factory.newDocumentBuilder();
         InputSource is = new InputSource(new StringReader(xml));
         return builder.parse(is);
+    }
+
+    public static Document readXmlFile(String fileName) {
+        // Instantiate the Factory
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        try {
+            // optional, but recommended
+            // process XML securely, avoid attacks like XML External Entities (XXE)
+            dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+
+            // parse XML file
+            DocumentBuilder db = dbf.newDocumentBuilder();
+
+            Document doc = db.parse(new File(fileName));
+            return doc;
+        } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (SAXException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

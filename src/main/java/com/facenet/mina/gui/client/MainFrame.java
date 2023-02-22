@@ -121,8 +121,13 @@ public class MainFrame extends JFrame {
         this.revalidate();
     }
 
-    public void msgReceive(Message message) {
+    public void msgReceived(Message message) {
         t1.append(message.toString() + "\n");
         t2.setText("");
     }
+
+    public void close() {
+        System.exit(0);
+    }
+
 }

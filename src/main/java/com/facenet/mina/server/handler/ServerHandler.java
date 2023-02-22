@@ -1,9 +1,16 @@
 package com.facenet.mina.server.handler;
 
 import com.facenet.mina.entity.*;
+import com.facenet.mina.utils.XmlUtils;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -17,7 +24,16 @@ public class ServerHandler extends IoHandlerAdapter {
 
     private final Room room = new Room();
 
+    private final List<SocketAddress> blockedAddresses;
     private final List<IoSession> ioSessionList = new ArrayList<>();
+
+    public ServerHandler() {
+        Document blockedAddressesDoc =
+                XmlUtils.readXmlFile(
+                        "src/main/java/com/facenet/mina/xml_config/BlockedAddresses.xml");
+        blockedAddresses = getBlockedAddresses(blockedAddressesDoc);
+
+    }
 
     /**
      *
@@ -80,7 +96,7 @@ public class ServerHandler extends IoHandlerAdapter {
             });
             session.closeOnFlush();
         } else {
-            session.write("Error");
+            session.write(new Message("Something wrong", "Server"));
         }
     }
 
@@ -92,6 +108,27 @@ public class ServerHandler extends IoHandlerAdapter {
 
     @Override
     public void sessionCreated(IoSession session) throws Exception {
-        System.out.println(session.getRemoteAddress());
+        blockedAddresses.forEach(socketAddress -> {
+            if (((InetSocketAddress) socketAddress).getAddress().
+                    equals(((InetSocketAddress) session.getRemoteAddress()).getAddress()) ) {
+                    session.closeOnFlush();
+            }
+        });
+    }
+
+    @Override
+    public void sessionOpened(IoSession session) throws Exception {
+
+    }
+
+    private List<SocketAddress> getBlockedAddresses(Document blockedAddressesDoc) {
+        NodeList blockedAddressNodes = blockedAddressesDoc.getElementsByTagName("ip");
+        List<SocketAddress> blockedAddresses = new ArrayList<>();
+        for (int i = 0; i < blockedAddressNodes.getLength(); ++i) {
+            Node blockedAddressNode = blockedAddressNodes.item(i);
+            blockedAddresses.add(new InetSocketAddress(blockedAddressNode.getTextContent(), 0));
+        }
+
+        return blockedAddresses;
     }
 }

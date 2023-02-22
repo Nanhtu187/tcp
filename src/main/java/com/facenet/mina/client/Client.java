@@ -36,7 +36,6 @@ public class Client {
                 connector.getSessionConfig().setReuseAddress(true);
                 future.awaitUninterruptibly();
                 session = future.getSession();
-                clientSessionHandler.setServerWritingSession(session);
                 break;
             } catch (RuntimeIoException ex) {
                 System.err.println("Failed to connect.");

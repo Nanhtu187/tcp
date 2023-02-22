@@ -15,9 +15,13 @@ import org.apache.mina.filter.codec.ProtocolDecoderOutput;
 
 public class XmlDecoder extends ProtocolDecoderAdapter {
 
-    private static final AttributeKey CONTEXT =
-            new AttributeKey(XmlDecoder.class, "context");
-
+    /**
+     *
+     * @param ioSession
+     * @param ioBuffer
+     * @param protocolDecoderOutput
+     * @throws Exception
+     */
     @Override
     public void decode(IoSession ioSession, IoBuffer ioBuffer,
                        ProtocolDecoderOutput protocolDecoderOutput) throws Exception {
@@ -25,7 +29,6 @@ public class XmlDecoder extends ProtocolDecoderAdapter {
             byte[] dataBytes = new byte[ioBuffer.remaining()];
             ioBuffer.get(dataBytes);
             XmlEntity dataObject = SerializationUtils.deserialize(dataBytes);
-            System.out.println(dataObject.getClass());
             protocolDecoderOutput.write(dataObject);
         }
 
