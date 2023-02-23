@@ -15,14 +15,25 @@ public class Room extends XmlEntity {
      */
     private final List<Message> messageList;
 
+    /**
+     * Init Room
+     */
     public Room() {
         messageList = new ArrayList<Message>();
     }
 
+    /**
+     * put new Message to Room
+     * @param message
+     */
     public void addNewMsg(Message message) {
         this.messageList.add(message);
     }
 
+    /**
+     * Get List Message of Room
+     * @return
+     */
     public List<Message> getMessageList() {
         return messageList;
     }

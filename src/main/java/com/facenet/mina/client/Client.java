@@ -19,8 +19,11 @@ public class Client {
     private static final int PORT = 8081;
     private static final long CONNECT_TIMEOUT = 30*1000L;
 
-
-
+    /**
+     * Main of Client
+     * @param args
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws InterruptedException {
         ClientSessionHandler clientSessionHandler = new ClientSessionHandler();
         NioSocketConnector connector = new NioSocketConnector();

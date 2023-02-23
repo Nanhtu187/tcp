@@ -8,7 +8,6 @@ import org.apache.mina.core.session.IoSession;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
@@ -104,6 +103,12 @@ public class ServerHandler extends IoHandlerAdapter {
     }
 
 
+    /**
+     * Keep - Alive
+     * @param session
+     * @param status
+     * @throws Exception
+     */
     @Override
     public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
         Message keepAlive = new Message("Keep - Alive", "Server", false);
@@ -151,6 +156,11 @@ public class ServerHandler extends IoHandlerAdapter {
         return blockedAddresses;
     }
 
+    /**
+     * Call when session close
+     * @param session
+     * @throws Exception
+     */
     @Override
     public void sessionClosed(IoSession session) throws Exception {
         String username = users.get(session.getId());

@@ -8,6 +8,7 @@ package com.facenet.mina.entity;
 public class Message extends XmlEntity {
 
     private String content;
+
     private String username;
 
     private Boolean visible;
@@ -110,6 +111,10 @@ public class Message extends XmlEntity {
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         return super.hashCode();
@@ -117,7 +122,6 @@ public class Message extends XmlEntity {
 
     public static final Message MESSAGE_REJECT = new Message("Server reject", "Server", false);
     public static final Message LOGIN_SUCCESS = new Message("Login Success", "Server", false);
-
     public static final Message GET_ROOM = new Message("Get room", "Client", false);
 
 }

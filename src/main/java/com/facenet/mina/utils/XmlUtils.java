@@ -3,7 +3,6 @@ package com.facenet.mina.utils;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -34,6 +33,11 @@ public class XmlUtils {
         return builder.parse(is);
     }
 
+    /**
+     * Using when want to open a xml file as Document
+     * @param fileName - path of file
+     * @return
+     */
     public static Document readXmlFile(String fileName) {
         // Instantiate the Factory
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -47,11 +51,7 @@ public class XmlUtils {
 
             Document doc = db.parse(new File(fileName));
             return doc;
-        } catch (ParserConfigurationException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (SAXException e) {
+        } catch (ParserConfigurationException | IOException | SAXException e) {
             throw new RuntimeException(e);
         }
 

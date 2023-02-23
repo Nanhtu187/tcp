@@ -3,7 +3,6 @@ package com.facenet.mina.gui.client;
 import com.facenet.mina.service.ClientService;
 import com.facenet.mina.entity.Message;
 import com.facenet.mina.service.impl.ClientServiceImpl;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -42,6 +41,11 @@ public class MainFrame extends JFrame {
 
     private ClientService clientService;
 
+    /**
+     * Init Main frame
+     * @param clientService
+     * @throws HeadlessException
+     */
     public MainFrame(ClientService clientService) throws HeadlessException {
         this.btnLogin = new JButton("Login");
         this.labelLogin = new JLabel("Please fill your name");
@@ -112,10 +116,17 @@ public class MainFrame extends JFrame {
         this.pack();
     }
 
+    /**
+     * Using when click login button
+     * @param name
+     */
     public void login(String name) {
         clientService.login(name);
     }
 
+    /**
+     * Change From Login Frame to Chat Frame
+     */
     public void changeFrameChat() {
         this.remove(loginPanel);
         this.setTitle(((ClientServiceImpl) clientService).getUsername());
@@ -125,8 +136,11 @@ public class MainFrame extends JFrame {
         this.revalidate();
     }
 
+    /**
+     * Handling incoming messages
+     * @param message
+     */
     public void msgReceived(Message message) {
-        System.out.println(message.toString());
         if (message != null) {
             if (message.isVisible()) {
                 t1.append(message.toString() + "\n");
@@ -146,6 +160,9 @@ public class MainFrame extends JFrame {
 
     }
 
+    /**
+     * Close Client and
+     */
     public void close() {
         System.exit(0);
     }

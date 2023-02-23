@@ -32,7 +32,8 @@ public class ChatPanel extends JPanel{
      * @param t2
      * @param b1
      */
-    public ChatPanel(JLabel l1, JTextArea t1, JScrollPane pane, JLabel l2, TextField t2, JButton b1) {
+    public ChatPanel(JLabel l1, JTextArea t1, JScrollPane pane,
+                     JLabel l2, TextField t2, JButton b1) {
         Panel panel1 = new Panel();
         Panel panel2 = new Panel();
         this.l1 = l1;

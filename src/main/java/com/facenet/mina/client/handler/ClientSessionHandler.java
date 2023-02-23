@@ -17,14 +17,11 @@ import java.awt.*;
 public class ClientSessionHandler extends IoHandlerAdapter {
     private IoSession serverWritingSession;
 
-
     private ClientService clientService;
 
     private MainFrame mainFrame;
 
-
     private String name;
-
 
     public String getName() {
         return name;
@@ -34,8 +31,12 @@ public class ClientSessionHandler extends IoHandlerAdapter {
         this.name = name;
     }
 
-
-
+    /**
+     * Call when there is an incoming message
+     * @param session
+     * @param message
+     * @throws Exception
+     */
     @Override
     public void messageReceived(IoSession session, Object message) throws Exception {
         if (message instanceof Message) {
@@ -48,6 +49,11 @@ public class ClientSessionHandler extends IoHandlerAdapter {
         }
     }
 
+    /**
+     * Call when session created
+     * @param session
+     * @throws Exception
+     */
     @Override
     public void sessionCreated(IoSession session) throws Exception {
         System.out.println("sessionCreated");
@@ -57,12 +63,22 @@ public class ClientSessionHandler extends IoHandlerAdapter {
         mainFrame.setVisible(true);
     }
 
+    /**
+     *
+     * @param session
+     * @throws Exception
+     */
     @Override
     public void sessionOpened(IoSession session) throws Exception {
         System.out.println("sessionOpened");
 
     }
 
+    /**
+     *
+     * @param session
+     * @throws Exception
+     */
     @Override
     public void sessionClosed(IoSession session) throws Exception {
         System.out.println("sessionClosed");

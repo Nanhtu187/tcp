@@ -10,6 +10,7 @@ import java.awt.*;
 
 public class LoginPanel extends JPanel {
     private JButton btnLogin;
+
     private JTextField input;
 
     private JLabel label;
@@ -26,8 +27,6 @@ public class LoginPanel extends JPanel {
         this.input = input;
         this.label = label;
         this.input.setBounds(0,0 ,100, 20);
-//        this.input.setColumns(10);
-//        input.set
         this.add(label);
         this.add(input);
         this.add(btnLogin);

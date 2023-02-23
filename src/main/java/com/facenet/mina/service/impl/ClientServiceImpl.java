@@ -15,8 +15,6 @@ public class ClientServiceImpl implements ClientService {
 
     private String username;
 
-    public static final String HEADER_XML = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-
     public ClientServiceImpl(IoSession session) {
         this.session = session;
     }
@@ -29,6 +27,10 @@ public class ClientServiceImpl implements ClientService {
         this.username = username;
     }
 
+    /**
+     * Login Service
+     * @param name
+     */
     @Override
     public void login(String name) {
         Login login = new Login(name);
@@ -36,17 +38,27 @@ public class ClientServiceImpl implements ClientService {
         session.write(login);
     }
 
+    /**
+     * Send Message service
+     * @param message
+     */
     @Override
     public void sendMessage(String message) {
         Message msg = new Message(message, this.username);
         session.write(msg);
     }
 
+    /**
+     * Logout service
+     */
     @Override
     public void logout() {
         session.closeOnFlush();
     }
 
+    /**
+     * Request all message service
+     */
     @Override
     public void sendRequestGetRoom() {
         session.write(Message.GET_ROOM);
