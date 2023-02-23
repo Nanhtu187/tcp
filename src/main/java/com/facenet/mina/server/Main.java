@@ -31,9 +31,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
         IoAcceptor acceptor = new NioSocketAcceptor();
 
-        acceptor.getFilterChain().addLast("logger", new LoggingFilter("TCPServer"));
+        acceptor.getFilterChain().addLast("logger",
+                new LoggingFilter("TCPServer"));
 
-        acceptor.getFilterChain().addLast("xml", new ProtocolCodecFilter(
+        acceptor.getFilterChain().addLast("xml",
+                new ProtocolCodecFilter(
                 new XmlCodecFactory()
         ));
 

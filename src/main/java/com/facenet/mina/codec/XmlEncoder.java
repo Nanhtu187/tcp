@@ -31,7 +31,7 @@ public class XmlEncoder extends ProtocolEncoderAdapter {
         ioBuffer.flip();
         protocolEncoderOutput.write(ioBuffer);
 
-        //Old encode
+        //Old encode (để lại khi nào xài :))
 //        ioBuffer = IoBuffer.allocate(xmlEntity.toXML().length()).setAutoExpand(true);
 //        ioBuffer.putString(xmlEntity.toXML(), Charset.defaultCharset().newEncoder());
 //        ioBuffer.flip();

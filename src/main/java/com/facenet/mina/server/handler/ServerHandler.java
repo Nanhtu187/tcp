@@ -9,6 +9,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.util.*;
@@ -25,14 +26,17 @@ public class ServerHandler extends IoHandlerAdapter {
     private final Room room = new Room();
 
     private final List<SocketAddress> blockedAddresses;
+
     private final List<IoSession> ioSessionList = new ArrayList<>();
 
+    /**
+     * Init Server Handler
+     */
     public ServerHandler() {
         Document blockedAddressesDoc =
                 XmlUtils.readXmlFile(
                         "src/main/java/com/facenet/mina/xml_config/BlockedAddresses.xml");
         blockedAddresses = getBlockedAddresses(blockedAddressesDoc);
-
     }
 
     /**
@@ -63,12 +67,19 @@ public class ServerHandler extends IoHandlerAdapter {
      * @throws Exception
      */
     @Override
-    public void messageReceived(IoSession session, Object message) throws Exception {
+    public void messageReceived(IoSession session, Object message)
+            throws Exception {
 
         if (message instanceof Login) {
             String username = ((Login) message).getUsername();
             if (!users.containsKey(session.getId())) {
-                users.put(session.getId(), username);
+                if (users.containsValue(username)) {
+                    responseMessage(session, Message.MESSAGE_REJECT);
+                    return;
+                } else {
+                    users.put(session.getId(), username);
+                    responseMessage(session, Message.LOGIN_SUCCESS);
+                }
                 Message newMsg = new Message(username + " join chat room",
                         "Server");
                 room.addNewMsg(newMsg);
@@ -76,25 +87,17 @@ public class ServerHandler extends IoHandlerAdapter {
                 ioSessionList.forEach(session1 -> {
                     if (!session1.equals(session)) {
                         responseMessage(session1, newMsg);
-                    } else {
-                        session1.write(room);
                     }
                 });
             }
         } else if (message instanceof Message) {
+            if (((Message) message).equals(Message.GET_ROOM)) {
+                session.write(room);
+            }
             room.addNewMsg((Message) message);
             ioSessionList.forEach(session1 -> {
                 responseMessage(session1, (Message) message);
             });
-        } else if (message instanceof Logout) {
-            String username = users.get(session.getId());
-            Message newMsg =
-                    new Message(username + " out chat room", "Server");
-            room.addNewMsg(newMsg);
-            ioSessionList.forEach(session1 -> {
-                responseMessage(session1, newMsg);
-            });
-            session.closeOnFlush();
         } else {
             session.write(new Message("Something wrong", "Server"));
         }
@@ -103,24 +106,41 @@ public class ServerHandler extends IoHandlerAdapter {
 
     @Override
     public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
-        System.out.println("IDLE " + session.getIdleCount(status));
+        Message keepAlive = new Message("Keep - Alive", "Server", false);
+        session.write(keepAlive);
     }
 
+    /**
+     *
+     * @param session
+     * @throws Exception
+     */
     @Override
     public void sessionCreated(IoSession session) throws Exception {
         blockedAddresses.forEach(socketAddress -> {
-            if (((InetSocketAddress) socketAddress).getAddress().
-                    equals(((InetSocketAddress) session.getRemoteAddress()).getAddress()) ) {
+            InetAddress blockedAddress =
+                    ((InetSocketAddress) socketAddress).getAddress();
+            InetAddress clientAddress =
+                    ((InetSocketAddress) session.getRemoteAddress()).getAddress();
+            if (blockedAddress != null && blockedAddress.equals(clientAddress)) {
                     session.closeOnFlush();
             }
         });
     }
 
+    /**
+     *
+     */
     @Override
     public void sessionOpened(IoSession session) throws Exception {
-
+        //DO Something when session Open
     }
 
+    /**
+     *
+     * @param blockedAddressesDoc - Document from xml file
+     * @return List of Ip is blocked
+     */
     private List<SocketAddress> getBlockedAddresses(Document blockedAddressesDoc) {
         NodeList blockedAddressNodes = blockedAddressesDoc.getElementsByTagName("ip");
         List<SocketAddress> blockedAddresses = new ArrayList<>();
@@ -128,7 +148,21 @@ public class ServerHandler extends IoHandlerAdapter {
             Node blockedAddressNode = blockedAddressNodes.item(i);
             blockedAddresses.add(new InetSocketAddress(blockedAddressNode.getTextContent(), 0));
         }
-
         return blockedAddresses;
+    }
+
+    @Override
+    public void sessionClosed(IoSession session) throws Exception {
+        String username = users.get(session.getId());
+        Message newMsg =
+                new Message(username + " out chat room", "Server");
+        room.addNewMsg(newMsg);
+        ioSessionList.remove(session);
+        ioSessionList.forEach(session1 -> {
+            System.out.println(session1.getId());
+            responseMessage(session1, newMsg);
+        });
+        users.remove(session.getId());
+        session.closeOnFlush();
     }
 }

@@ -1,7 +1,6 @@
 package com.facenet.mina.service.impl;
 
 import com.facenet.mina.entity.Login;
-import com.facenet.mina.entity.Logout;
 import com.facenet.mina.entity.Message;
 import com.facenet.mina.service.ClientService;
 import org.apache.mina.core.session.IoSession;
@@ -45,7 +44,11 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void logout() {
-        Logout logout = new Logout();
-        session.write(logout);
+        session.closeOnFlush();
+    }
+
+    @Override
+    public void sendRequestGetRoom() {
+        session.write(Message.GET_ROOM);
     }
 }

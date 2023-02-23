@@ -39,6 +39,7 @@ public class ClientSessionHandler extends IoHandlerAdapter {
     @Override
     public void messageReceived(IoSession session, Object message) throws Exception {
         if (message instanceof Message) {
+            Message messageData = (Message) message;
             mainFrame.msgReceived((Message) message);
         } else if (message instanceof Room) {
             ((Room) message).getMessageList().forEach(msg -> {

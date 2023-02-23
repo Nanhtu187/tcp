@@ -13,6 +13,8 @@ public interface ClientService {
 
     public void logout();
 
+    public void sendRequestGetRoom();
+
 
 
 }

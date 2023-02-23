@@ -19,7 +19,6 @@ public class Room extends XmlEntity {
         messageList = new ArrayList<Message>();
     }
 
-
     public void addNewMsg(Message message) {
         this.messageList.add(message);
     }

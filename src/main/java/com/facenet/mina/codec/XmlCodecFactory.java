@@ -16,11 +16,23 @@ public class XmlCodecFactory implements ProtocolCodecFactory {
 
     private XmlDecoder decoder = new XmlDecoder();
 
+    /**
+     *
+     * @param ioSession
+     * @return
+     * @throws Exception
+     */
     @Override
     public ProtocolEncoder getEncoder(IoSession ioSession) throws Exception {
         return this.encoder;
     }
 
+    /**
+     *
+     * @param ioSession
+     * @return
+     * @throws Exception
+     */
     @Override
     public ProtocolDecoder getDecoder(IoSession ioSession) throws Exception {
         return this.decoder;

@@ -2,6 +2,8 @@ package com.facenet.mina.gui.client;
 
 import com.facenet.mina.service.ClientService;
 import com.facenet.mina.entity.Message;
+import com.facenet.mina.service.impl.ClientServiceImpl;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -111,10 +113,12 @@ public class MainFrame extends JFrame {
     }
 
     public void login(String name) {
-
         clientService.login(name);
+    }
+
+    public void changeFrameChat() {
         this.remove(loginPanel);
-        this.setTitle(name);
+        this.setTitle(((ClientServiceImpl) clientService).getUsername());
         this.setContentPane(chatPanel);
         this.repaint();
         this.t2.requestFocus();
@@ -122,8 +126,24 @@ public class MainFrame extends JFrame {
     }
 
     public void msgReceived(Message message) {
-        t1.append(message.toString() + "\n");
-        t2.setText("");
+        System.out.println(message.toString());
+        if (message != null) {
+            if (message.isVisible()) {
+                t1.append(message.toString() + "\n");
+                t2.setText("");
+            }
+
+            if (message.equals(Message.MESSAGE_REJECT)) {
+                JOptionPane.showMessageDialog(this,
+                        message.getContent() + "\n Try again!",
+                        "Alert",JOptionPane.WARNING_MESSAGE);
+            }
+            if (message.equals(Message.LOGIN_SUCCESS)) {
+                clientService.sendRequestGetRoom();
+                changeFrameChat();
+            }
+        }
+
     }
 
     public void close() {
