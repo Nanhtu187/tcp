@@ -6,7 +6,7 @@ import com.facenet.mina.service.ClientService;
 import org.apache.mina.core.session.IoSession;
 
 /**
- * @author: hungdinh
+ * @author: nanhtu
  * Date created: 20/02/2023
  */
 public class ClientServiceImpl implements ClientService {

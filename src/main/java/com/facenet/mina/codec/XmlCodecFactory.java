@@ -6,7 +6,7 @@ import org.apache.mina.filter.codec.ProtocolDecoder;
 import org.apache.mina.filter.codec.ProtocolEncoder;
 
 /**
- * @author: hungdinh
+ * @author: nanhtu
  * Date created: 20/02/2023
  */
 

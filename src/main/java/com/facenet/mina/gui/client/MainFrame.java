@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * @author: hungdinh
+ * @author: nanhtu
  * Date created: 20/02/2023
  */
 

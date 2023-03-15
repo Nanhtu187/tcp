@@ -11,7 +11,7 @@ import org.apache.mina.transport.socket.nio.NioSocketConnector;
 import java.net.InetSocketAddress;
 
 /**
- * @author: hungdinh
+ * @author: nanhtu
  * Date created: 20/02/2023
  */
 public class Client {

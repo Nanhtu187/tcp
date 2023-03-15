@@ -3,7 +3,7 @@ package com.facenet.mina.entity;
 import java.io.Serializable;
 
 /**
- * @author: hungdinh
+ * @author: nanhtu
  * Date created: 20/02/2023
  */
 

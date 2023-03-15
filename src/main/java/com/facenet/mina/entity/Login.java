@@ -1,7 +1,7 @@
 package com.facenet.mina.entity;
 
 /**
- * @author: hungdinh
+ * @author: nanhtu
  * Date created: 20/02/2023
  */
 

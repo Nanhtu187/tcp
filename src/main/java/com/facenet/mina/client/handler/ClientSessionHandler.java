@@ -11,7 +11,7 @@ import org.apache.mina.core.session.IoSession;
 import java.awt.*;
 
 /**
- * @author: hungdinh
+ * @author: nanhtu
  * Date created: 20/02/2023
  */
 public class ClientSessionHandler extends IoHandlerAdapter {
